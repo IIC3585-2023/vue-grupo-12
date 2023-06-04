@@ -5,7 +5,7 @@
   <div class="pinterest">
     <div class="left">
       <a href="#" class="logo">
-        <img src="icons-red/manifest-icon-192.maskable.png" alt="">
+        <img alt="Pucterest logo" src="@/assets/pint_logo.png" width="50" height="50" />
       </a>
     </div>
     <div class="search">
