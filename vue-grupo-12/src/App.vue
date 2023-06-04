@@ -1,28 +1,17 @@
 <script setup>
+import Navbar from './components/Navbar.vue';
+import PinContainer from './components/PinContainer.vue';
 </script>
 
 <template>
   <header>
-    <!-- Navbar -->
+    <Navbar />
   </header>
 
-  <div class="pin_container">
-    <!-- Pins -->
-  </div>
+  <Suspense>
+    <PinContainer />
+  </Suspense>
 </template>
 
 <style scoped>
-  :root {
-    --card_width: 250px;
-    --row_increment: 10px;
-  }
-  .pin_container {
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, var(--card_width));
-    grid-auto-rows: var(--row_increment);
-    justify-content: center;
-    background-color:white;
-  }
 </style>

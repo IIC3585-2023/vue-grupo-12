@@ -1,10 +1,9 @@
 <script setup>
   defineProps({
-    id: Number,
     url: String,
     description: String,
-    size: String,
-    likes: Number
+    likes: Number,
+    size: String
   })
 </script>
 
