@@ -1,16 +1,25 @@
-<script setup>
+<script>
+  import { themeStorage } from '../stores/themeStorage.js'
+  export default {
+  data() {
+    return {
+      themeStorage
+    }
+  }
+}
 </script>
 
 <template>
-  <div class="pinterest">
+  <div class="pinterest" v-bind:class = "(themeStorage.theme == 'light')?' ':'dark-background'">
     <div class="left">
       <a href="#" class="logo">
-        <img src="icons-red/manifest-icon-192.maskable.png" alt="">
+        <img alt="Pucterest logo" src="@/assets/pint_logo.png" width="50" height="50" />
+        
       </a>
     </div>
-    <div class="search">
+    <div class="search" v-bind:class = "(themeStorage.theme == 'light')?' ':'dark-background'">
       <i class="fas fa-search"></i>
-      <input type="search" name="" placeholder="Search" id="">
+      <input type="search" name="" placeholder="Search" id="search-bar">
     </div>
     <div class="right">
       <a href="#" class="items"><i class="fas fa-bell"></i></a>
@@ -18,12 +27,27 @@
       <a href="#" class="avatar">
         <div class="img"><img src="https://images.unsplash.com/photo-1534308143481-c55f00be8bd7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1488&q=80" alt=""></div>
       </a>
+      <!-- obtenido de https://dev.to/tqbit/create-your-own-dark-mode-toggle-component-with-vue-js-1284 -->
+      <div>
+        <button class="darkmode-switch items" @click="themeStorage.toggle()">
+          {{ (themeStorage.theme == 'light')? '🌙':'☀️' }}
+        </button>
+      </div>
+
     </div>
   </div>
 </template>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+
+/* obtenido de https://dev.to/tqbit/create-your-own-dark-mode-toggle-component-with-vue-js-1284 */
+.darkmode-switch {
+  background: transparent;
+  border: none;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -45,6 +69,20 @@
     background-color: #fff;
     padding: 0.938rem;
   }
+  
+  div.dark-background {
+    background-color: black;
+  }
+  div.search.dark-background {
+    background-color: #767676;
+  }
+  div.search.dark-background input {
+    color: white;
+  }
+  div.search.dark-background input::placeholder {
+    color: lightgray;
+  }
+
   .left {
     display: flex;
     align-items: center;
