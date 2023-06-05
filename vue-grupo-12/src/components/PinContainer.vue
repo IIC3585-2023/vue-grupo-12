@@ -1,25 +1,17 @@
 <script setup>
-  import { onMounted, ref } from 'vue';
+  import { onMounted, computed } from "vue";
   import Pin from './Pin.vue';
+  import ScrollButton from "./ScrollButton.vue";
+  import { useImageStore } from "../stores/images";
 
-  const images = ref([]);
+  const store = useImageStore();
 
-  const getRandomSize = () => {
-    var sizes = ['card_small', 'card_medium', 'card_large'];
-    let randomIndex = Math.floor(Math.random() * sizes.length);
-    return sizes[randomIndex];
-  }
+  const images = computed(() => {
+    return store.images;
+  });
 
-  onMounted(async () => {
-    const response = await fetch('https://api.unsplash.com/photos/random?count=30', {
-      method: 'GET',
-      headers: { Authorization: 'Client-ID 6H1smp1FpNFz-V7LF-BHILxuuM6MYd1aC_2lFqNN_2k'}
-    });
-    const imageData = await response.json();
-    imageData.forEach(image => {
-      image.size = getRandomSize();
-    });
-    images.value = imageData;
+  onMounted(() => {
+    store.fetchImages();
   });
 </script>
 
@@ -34,6 +26,7 @@
     :size="image.size"
     />
   </div>
+  <ScrollButton />
 </template>
 
 <style scoped>
@@ -44,6 +37,6 @@
     grid-template-columns: repeat(auto-fill, 250px);
     grid-auto-rows: 10px;
     justify-content: center;
-    background-color:white;
-  }
+    background-color: white;
+}
 </style>
