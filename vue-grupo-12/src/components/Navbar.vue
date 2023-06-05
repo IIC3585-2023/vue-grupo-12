@@ -1,6 +1,14 @@
 <script setup>
-import { themeStorage } from '../stores/themeStorage.js'
-import { RouterLink } from 'vue-router'
+  import { ref, defineEmits } from 'vue';
+  import { RouterLink } from 'vue-router';
+  import { themeStorage } from '../stores/themeStorage.js';
+
+  const search = ref('');
+  const emit = defineEmits(['update-search']);
+
+  const updateSearch = () => {
+    emit('update-search', search.value);
+  };
 </script>
 
 <template>
@@ -14,7 +22,7 @@ import { RouterLink } from 'vue-router'
     </RouterLink>
     <div class="search" v-bind:class="(themeStorage.theme == 'light') ? ' ' : 'dark-background'">
       <i class="fas fa-search"></i>
-      <input type="search" name="" placeholder="Search" id="search-bar">
+      <input id="search-bar" name="" placeholder="Search" type="text" v-model="search" @input="updateSearch">
     </div>
     <div class="right">
       <a href="#" class="items"><i class="fas fa-bell"></i></a>
@@ -175,7 +183,7 @@ div.search.dark-background input::placeholder {
   border: none;
   background: none;
   outline: none;
-  padding-right: 1rem;
+  padding-left: 1rem;
 }
 
 .search input::placeholder {

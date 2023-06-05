@@ -10,7 +10,9 @@ const getRandomSize = () => {
 
 export const useImageStore = defineStore('images', {
   state: () => ({
-    images: []
+    images: [],
+    search: '',
+    url: 'https://api.unsplash.com/photos/random?count=30'
   }),
   getters: {
     getImages(state) {
@@ -21,9 +23,14 @@ export const useImageStore = defineStore('images', {
     }
   },
   actions: {
+    setSearch(value) {
+      this.search = value
+      this.url = 'https://api.unsplash.com/photos/random?count=30&query=' + this.search;
+      this.fetchImages();
+    },
     async fetchImages() {
       try {
-        const response = await fetch('https://api.unsplash.com/photos/random?count=30', {
+        const response = await fetch(this.url, {
           method: 'GET',
           headers: { Authorization: 'Client-ID 6H1smp1FpNFz-V7LF-BHILxuuM6MYd1aC_2lFqNN_2k' }
         })
@@ -31,7 +38,7 @@ export const useImageStore = defineStore('images', {
         imageData.forEach((image) => {
           image.size = getRandomSize()
         })
-        this.images.push(...imageData)
+        this.images = imageData;
       } catch (error) {
         console.log(error)
       }
