@@ -88,6 +88,7 @@ div.search.dark-background input::placeholder {
   display: flex;
   align-items: center;
   width: 20%;
+  margin-inline: 10px;
 }
 
 .left .logo {
