@@ -13,13 +13,13 @@
 
 <template>
   <div class="pinterest" v-bind:class="(themeStorage.theme == 'light') ? ' ' : 'dark-background'">
-    <RouterLink :to="`/`">
-      <div class="left">
+    <div class="left">
+      <RouterLink :to="`/`">
         <a href="#" class="logo">
           <img alt="Pucterest logo" src="@/assets/pint_logo.png" width="50" height="50" />
         </a>
-      </div>
-    </RouterLink>
+      </RouterLink>
+    </div>
     <div class="search" v-bind:class="(themeStorage.theme == 'light') ? ' ' : 'dark-background'">
       <i class="fas fa-search"></i>
       <input id="search-bar" name="" placeholder="Search" type="text" v-model="search" @input="updateSearch">
