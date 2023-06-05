@@ -14,35 +14,29 @@
 </template>
 
 <style scoped>
-  :root {
-    --card_border_radius: 16px;
-    --card_small: 26;
-    --card_medium: 33;
-    --card_large: 45;
-  }
   .card {
     padding: 0;
     margin: 15px 10px;
-    border-radius: var(--card_border_radius);
+    border-radius: 16px;
     background-color: grey;
   }
 
   .card_small {
-    grid-row-end: span var(--card_small);
+    grid-row-end: span 26;
   }
 
   .card_medium {
-    grid-row-end: span var(--card_medium);
+    grid-row-end: span 33;
   }
 
   .card_large {
-    grid-row-end: span var(--card_large);
+    grid-row-end: span 45;
   }
 
   .card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: var(--card_border_radius);
+    border-radius: 16px;
   }
 </style>
