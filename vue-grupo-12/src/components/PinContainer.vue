@@ -3,6 +3,7 @@
   import Pin from './Pin.vue';
   import ScrollButton from "./ScrollButton.vue";
   import { useImageStore } from "../stores/images";
+  import { themeStorage } from '../stores/themeStorage.js'
 
   const store = useImageStore();
 
@@ -16,7 +17,7 @@
 </script>
 
 <template>
-  <div class="pin_container">
+  <div class="pin_container" v-bind:class = "(themeStorage.theme == 'light')?' ':'dark-background'">
     <Pin
     v-for="image in images"
     :key="image.id"
@@ -39,4 +40,7 @@
     justify-content: center;
     background-color: white;
 }
+.dark-background {
+    background-color: black;
+  }
 </style>

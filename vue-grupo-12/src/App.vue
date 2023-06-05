@@ -1,7 +1,6 @@
 <script setup>
-import Navbar from './components/Navbar.vue';
-import PinContainer from './components/PinContainer.vue'
-import { themeStorage } from './stores/themeStorage.js'
+  import Navbar from './components/Navbar.vue';
+  import PinContainer from './components/PinContainer.vue'
 </script>
 
 <template>
@@ -13,7 +12,7 @@ import { themeStorage } from './stores/themeStorage.js'
   <br>
   <br>
   <Suspense id="pin-container" >
-    <PinContainer v-bind:class = "(themeStorage.theme == 'light')?' ':'dark-background'"/>
+    <PinContainer/>
   </Suspense>
 </template>
 
@@ -26,7 +25,4 @@ html {
   width: 100%;
   top: -0px;
 }
-.dark-background {
-    background-color: black;
-  }
 </style>

@@ -1,12 +1,5 @@
-<script>
+<script setup>
   import { themeStorage } from '../stores/themeStorage.js'
-  export default {
-  data() {
-    return {
-      themeStorage
-    }
-  }
-}
 </script>
 
 <template>
@@ -33,14 +26,12 @@
           {{ (themeStorage.theme == 'light')? '🌙':'☀️' }}
         </button>
       </div>
-
     </div>
   </div>
 </template>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
 /* obtenido de https://dev.to/tqbit/create-your-own-dark-mode-toggle-component-with-vue-js-1284 */
 .darkmode-switch {
   background: transparent;
@@ -68,7 +59,6 @@
     background-color: #fff;
     padding: 0.938rem;
   }
-  
   div.dark-background {
     background-color: black;
   }
@@ -81,7 +71,6 @@
   div.search.dark-background input::placeholder {
     color: lightgray;
   }
-
   .left {
     display: flex;
     align-items: center;
