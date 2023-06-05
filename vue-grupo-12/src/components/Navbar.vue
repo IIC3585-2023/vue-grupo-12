@@ -41,7 +41,6 @@
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-
 /* obtenido de https://dev.to/tqbit/create-your-own-dark-mode-toggle-component-with-vue-js-1284 */
 .darkmode-switch {
   background: transparent;
