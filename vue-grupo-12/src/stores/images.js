@@ -15,6 +15,9 @@ export const useImageStore = defineStore('images', {
   getters: {
     getImages(state) {
       return state.images
+    },
+    getImageById: (state) => (id) => {
+      return state.images.find((image) => image.id === id)
     }
   },
   actions: {
@@ -32,6 +35,10 @@ export const useImageStore = defineStore('images', {
       } catch (error) {
         console.log(error)
       }
+    },
+    async increaseLikes(id) {
+      const image = this.getImageById(id)
+      image.likes++
     }
   }
 })

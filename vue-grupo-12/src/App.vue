@@ -1,6 +1,6 @@
 <script setup>
   import Navbar from './components/Navbar.vue';
-  import PinContainer from './components/PinContainer.vue'
+  import { RouterView } from 'vue-router'
 </script>
 
 <template>
@@ -12,8 +12,8 @@
   <br>
   <br>
   <Suspense id="pin-container" >
-    <PinContainer/>
   </Suspense>
+  <RouterView />
 </template>
 
 <style scoped>
