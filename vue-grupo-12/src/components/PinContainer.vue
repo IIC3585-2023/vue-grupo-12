@@ -14,6 +14,7 @@
   onMounted(() => {
     store.fetchImages();
   });
+
 </script>
 
 <template>

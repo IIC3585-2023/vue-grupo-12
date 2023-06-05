@@ -1,5 +1,13 @@
 <script setup>
+  import { ref, defineEmits } from 'vue';
   import { themeStorage } from '../stores/themeStorage.js'
+
+  const search = ref('');
+  const emit = defineEmits(['update-search']);
+
+  const updateSearch = () => {
+    emit('update-search', search.value);
+  };
 </script>
 
 <template>
@@ -12,7 +20,7 @@
     </div>
     <div class="search" v-bind:class = "(themeStorage.theme == 'light')?' ':'dark-background'">
       <i class="fas fa-search"></i>
-      <input type="search" name="" placeholder="Search" id="search-bar">
+      <input id="search-bar" name="" placeholder="Search" type="text" v-model="search" @input="updateSearch">
     </div>
     <div class="right">
       <a href="#" class="items"><i class="fas fa-bell"></i></a>
